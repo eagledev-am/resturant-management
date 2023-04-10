@@ -13,7 +13,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			
+			// Login view 
+			// username = 'admin'
+			// passwprd = '123456'
 			Parent root = FXMLLoader.load(getClass().getResource("view/Login.fxml"));
 		    primaryStage = stage;
 		    scene = new Scene(root);
