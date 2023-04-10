@@ -1,0 +1,14 @@
+#Login {
+	-fx-background-color: #333;
+}
+
+.button {
+	-fx-background-color :#AB4642;
+	-fx-text-fill :#ffffff;
+	-fx-background-radius:4;
+    -fx-border-radius:10;
+}
+#outButton{
+	 -fx-background-color: #7cafc2;
+     -fx-border-radius:10;
+}

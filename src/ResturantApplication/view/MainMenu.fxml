@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="891.0" stylesheets="@MainMenu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResturantApplication.MainMenuController">
+  
+      <Pane layoutX="540.0" prefHeight="454.0" prefWidth="207.0" style="-fx-background-color: #333;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="28.0" layoutY="146.0" mnemonicParsing="false" onAction="#showDrinks" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="30.0" prefWidth="152.0" style="-fx-background-radius: 50;" text="المشروبات" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="outButton" layoutX="28.0" layoutY="362.0" mnemonicParsing="false" onAction="#goOut" prefHeight="30.0" prefWidth="152.0" style="-fx-background-radius: 50;" text="تسجيل الخروج" textAlignment="CENTER" textFill="#e81919">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="28.0" layoutY="91.0" mnemonicParsing="false" onAction="#showMeals" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="30.0" prefWidth="152.0" style="-fx-background-radius: 50;" text="الوجبات" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="59.0" layoutY="36.0" text="لوحه التحكم" textFill="#fcf9f9">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   <VBox id="VboxMainMenu" alignment="BASELINE_CENTER" prefHeight="125.0" prefWidth="684.0" stylesheets="@MainMenu.css" AnchorPane.bottomAnchor="382.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="207.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Label alignment="TOP_CENTER" text="الاحصائيات" textAlignment="CENTER" textFill="#141ee1">
+            <font>
+               <Font name="Arial Bold" size="24.0" />
+            </font>
+            <VBox.margin>
+               <Insets top="10.0" />
+            </VBox.margin>
+         </Label>
+         <HBox alignment="CENTER" prefHeight="78.0" prefWidth="540.0" spacing="10.0">
+            <children>
+               <TextField fx:id="drinkCountField" alignment="CENTER" disable="true" opacity="0.54" prefHeight="25.0" prefWidth="89.0">
+                  <font>
+                     <Font name="Arial" size="14.0" />
+                  </font>
+               </TextField>
+               <Label alignment="CENTER" lineSpacing="10.0" text="عدد المشروبات">
+                  <font>
+                     <Font name="Arial" size="22.0" />
+                  </font>
+               </Label>
+               <Label />
+               <TextField fx:id="mealCountField" alignment="CENTER" disable="true" opacity="0.54" prefHeight="25.0" prefWidth="89.0">
+                  <font>
+                     <Font name="Arial" size="14.0" />
+                  </font>
+               </TextField>
+               <Label alignment="CENTER" lineSpacing="10.0" text="عدد الوجبات">
+                  <font>
+                     <Font name="Arial" size="22.0" />
+                  </font>
+               </Label>
+            </children>
+         </HBox>
+      </children>
+   </VBox>
+   <Pane fx:id="mealsPane" layoutY="125.0" prefHeight="395.0" prefWidth="684.0" style="-fx-background-color: #f9e0d3;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="207.0" AnchorPane.topAnchor="125.0">
+      <children>
+         <Label layoutX="561.0" layoutY="53.0" text="رقم الوجبه">
+            <font>
+               <Font name="Arial Narrow" size="21.0" />
+            </font>
+         </Label>
+         <Label layoutX="558.0" layoutY="91.0" text="اسم الوجبه">
+            <font>
+               <Font name="Arial Black" size="21.0" />
+            </font>
+         </Label>
+         <Label layoutX="561.0" layoutY="130.0" text="نوع الوجبه">
+            <font>
+               <Font name="Arial Black" size="21.0" />
+            </font>
+         </Label>
+         <Label layoutX="560.0" layoutY="170.0" text="سعرالوجبه">
+            <font>
+               <Font name="Arial Black" size="21.0" />
+            </font>
+         </Label>
+         <TextField fx:id="mealNumField" alignment="CENTER_RIGHT" layoutX="391.0" layoutY="50.0" prefHeight="31.0" prefWidth="149.0" />
+         <TextField fx:id="mealNameField" alignment="CENTER_RIGHT" layoutX="391.0" layoutY="91.0" prefHeight="31.0" prefWidth="149.0" />
+         <TextField fx:id="mealPriceField" alignment="CENTER_RIGHT" layoutX="391.0" layoutY="170.0" prefHeight="31.0" prefWidth="149.0" />
+         <ComboBox fx:id="comboMeal" layoutX="391.0" layoutY="133.0" prefHeight="25.0" prefWidth="149.0" promptText="اختر" />
+         <TableView fx:id="mealTable" layoutX="5.0" layoutY="50.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#getRowDataMeal" prefHeight="331.0" prefWidth="369.0">
+           <columns>
+             <TableColumn fx:id="mealNumColumn" prefWidth="85.0" text="رقم الوجبه" />
+             <TableColumn fx:id="mealNameColumn" prefWidth="88.0" text="اسم الوجبه" />
+               <TableColumn fx:id="mealTypeColumn" prefWidth="95.0" text="نوع الوجبه" />
+               <TableColumn fx:id="mealPriceColumn" prefWidth="100.0" text="سعر الوجبه" />
+           </columns>
+         </TableView>
+         <Label layoutX="317.0" layoutY="14.0" text="البحث">
+            <font>
+               <Font name="Arial Black" size="21.0" />
+            </font>
+         </Label>
+         <TextField fx:id="searchMealField" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="16.0" onKeyPressed="#searchMeal" prefHeight="27.0" prefWidth="292.0" />
+         <Button layoutX="391.0" layoutY="223.0" mnemonicParsing="false" onAction="#insertMeal" prefHeight="33.0" prefWidth="252.0" text="اضافه وجبه" textFill="#10a123">
+            <font>
+               <Font name="Arial Black" size="15.0" />
+            </font>
+         </Button>
+         <Button layoutX="391.0" layoutY="304.0" mnemonicParsing="false" onAction="#deleteMeal" prefHeight="33.0" prefWidth="252.0" text="حذف وجبه" textFill="#943225">
+            <font>
+               <Font name="Arial Black" size="15.0" />
+            </font>
+         </Button>
+         <Button layoutX="391.0" layoutY="346.0" mnemonicParsing="false" onAction="#clearFieldsMeals" prefHeight="33.0" prefWidth="252.0" text="تفريغ الجدول" textFill="#10a123">
+            <font>
+               <Font name="Arial Black" size="15.0" />
+            </font>
+         </Button>
+         <Button layoutX="391.0" layoutY="262.0" mnemonicParsing="false" onAction="#updateMeal" prefHeight="33.0" prefWidth="252.0" text="نعديل وجبه" textFill="#cdaf1d">
+            <font>
+               <Font name="Arial Black" size="15.0" />
+            </font>
+         </Button>
+      </children>
+   </Pane>
+   <Pane fx:id="drinkPane" layoutY="125.0" prefHeight="393.0" prefWidth="684.0" style="-fx-background-color: #f9fbd3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="207.0" AnchorPane.topAnchor="125.0">
+      <children>
+         <Label layoutX="561.0" layoutY="53.0" text="رقم المشروب">
+            <font>
+               <Font name="Arial Narrow" size="21.0" />
+            </font>
+         </Label>
+         <Label layoutX="558.0" layoutY="91.0" text="اسم المشروب">
+            <font>
+               <Font name="Arial Black" size="21.0" />
+            </font>
+         </Label>
+         <Label layoutX="561.0" layoutY="130.0" text="نوع المشروب">
+            <font>
+               <Font name="Arial Black" size="21.0" />
+            </font>
+         </Label>
+         <Label layoutX="556.0" layoutY="170.0" text="سعر المشروب">
+            <font>
+               <Font name="Arial Black" size="21.0" />
+            </font>
+         </Label>
+         <TextField fx:id="drinkNumField" alignment="CENTER_RIGHT" layoutX="391.0" layoutY="50.0" prefHeight="31.0" prefWidth="149.0" />
+         <TextField fx:id="drinkNameField" alignment="CENTER_RIGHT" layoutX="391.0" layoutY="91.0" prefHeight="31.0" prefWidth="149.0" />
+         <TextField fx:id="drinkPriceField" alignment="CENTER_RIGHT" layoutX="391.0" layoutY="170.0" prefHeight="31.0" prefWidth="149.0" />
+         <ComboBox fx:id="comboDrink" layoutX="391.0" layoutY="133.0" prefHeight="25.0" prefWidth="149.0" promptText="اختر" />
+         <TableView fx:id="drinkTable" layoutX="5.0" layoutY="50.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#getRowDataDriink" prefHeight="331.0" prefWidth="369.0">
+            <columns>
+               <TableColumn fx:id="drinkNumColumn" prefWidth="85.0" text="رقم المشروب" />
+               <TableColumn fx:id="drinkNameColumn" prefWidth="88.0" text="اسم المشروب" />
+               <TableColumn fx:id="drinkTypeColumn" prefWidth="95.0" text="نوع المشروب" />
+               <TableColumn fx:id="drinkPriceColumn" prefWidth="100.0" text="سعر المشروب" />
+            </columns>
+         </TableView>
+         <Label layoutX="317.0" layoutY="14.0" text="البحث">
+            <font>
+               <Font name="Arial Black" size="21.0" />
+            </font>
+         </Label>
+         <TextField fx:id="searchDrinkField" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="16.0" onKeyPressed="#searchDrinks" prefHeight="27.0" prefWidth="292.0" />
+         <Button layoutX="391.0" layoutY="223.0" mnemonicParsing="false" onAction="#insertDrink" prefHeight="33.0" prefWidth="252.0" text="اضافه مشروب" textFill="#10a123">
+            <font>
+               <Font name="Arial Black" size="15.0" />
+            </font>
+         </Button>
+         <Button layoutX="391.0" layoutY="304.0" mnemonicParsing="false" onAction="#deleteDrink" prefHeight="33.0" prefWidth="252.0" text="حذف مشروب" textFill="#943225">
+            <font>
+               <Font name="Arial Black" size="15.0" />
+            </font>
+         </Button>
+         <Button layoutX="391.0" layoutY="346.0" mnemonicParsing="false" onAction="#clearFieldsDrinks" prefHeight="33.0" prefWidth="252.0" text="تفريغ حقول" textFill="#10a123">
+            <font>
+               <Font name="Arial Black" size="15.0" />
+            </font>
+         </Button>
+         <Button layoutX="391.0" layoutY="262.0" mnemonicParsing="false" onAction="#updateDrink" prefHeight="33.0" prefWidth="252.0" text="تعديل مشروب" textFill="#cdaf1d">
+            <font>
+               <Font name="Arial Black" size="15.0" />
+            </font>
+         </Button>
+      </children>
+   </Pane>
+
+</AnchorPane>
